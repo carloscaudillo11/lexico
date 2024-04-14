@@ -1,0 +1,15 @@
+Program ejemplo1 {
+ 	Int x1;
+	Int x2;
+	Double y;
+	
+	x1 = 10;
+	x2 = 5;
+	y1 = 2.5;
+
+	suma = x1 + x2;
+	resta = suma - y1;
+
+	Print(suma);
+	Print(resta);
+}
