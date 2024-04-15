@@ -1,7 +1,9 @@
-Program ejemplo1 {
+Program ejemplo2 {
  	Int x1;
 	Int x2;
-	Double y;
+	Double y1;
+	Int suma;
+	Double resta;
 	
 	x1 = 10;
 	x2 = 5;
@@ -9,7 +11,8 @@ Program ejemplo1 {
 
 	suma = x1 + x2;
 	resta = suma - y1;
-
 	Print(suma);
 	Print(resta);
+
+	Error
 }

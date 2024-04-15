@@ -24,6 +24,11 @@ public class Regex implements IRegex {
         String s = String.valueOf(c);
         return s.matches(LETRA);
     }
+
+    public boolean esALFABETO(char c){ 
+        String s = String.valueOf(c);
+        return s.matches(ALFABETO);
+    }
     
     public boolean esRESERVADA(String c){
         return c.matches(RESERVADA);

@@ -100,7 +100,7 @@ public class Lexico {
                 clasificacion = "Tipo de Dato";
                 flag = 1;
             }
-            case "Double " -> {
+            case "Double" -> {
                 clasificacion = "Tipo de Dato";
                 flag = 2;
             }
@@ -183,6 +183,24 @@ public class Lexico {
                             && regex.esLETRA(linea.charAt(i))) {
                         lexema += linea.charAt(i);
                     } else {
+                        estado = 16;
+                        i--;
+                    }
+                }
+                case 16 -> {
+                    if (i < linea.length() && linea.charAt(i) >= '0' && linea.charAt(i) <= '9') {
+                        lexema += linea.charAt(i);
+                        estado = 17;
+                    } else {
+                        estado = 5;
+                        i--;
+                    }
+                }
+                case 17 -> {
+                    if (i < linea.length()
+                            && regex.esDIGITO(linea.charAt(i))) {
+                        lexema += linea.charAt(i);
+                    } else {
                         estado = 5;
                         i--;
                     }
@@ -252,14 +270,14 @@ public class Lexico {
                 case 11 -> {
                     if (regex.esENTERO(lexema)) {
                         Token temp;
-                        temp = generateToken(lexema, "Entero",
-                                "Entero",
+                        temp = generateToken(lexema, "Int",
+                                "Int",
                                 Integer.valueOf(lexema), line);
                         tokens.add(temp);
                     } else if (regex.esFLOTANTE(lexema)) {
                         Token temp;
-                        temp = generateToken(lexema, "Real",
-                                "Real",
+                        temp = generateToken(lexema, "Double",
+                                "Double",
                                 Double.valueOf(lexema), line);
                         tokens.add(temp);
                     }
@@ -301,12 +319,9 @@ public class Lexico {
                                 generateDescription(lexema),
                                 (int) lexema.charAt(0), line);
                         tokens.add(temp);
-                        estado = 0;
-                        lexema = "";
-                    } else {
-                        estado = 14;
-                        i--;
                     }
+                    estado = 0;
+                    lexema = "";
                 }
                 case 14 -> {
                     Token temp;

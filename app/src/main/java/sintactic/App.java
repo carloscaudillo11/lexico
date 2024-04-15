@@ -11,5 +11,6 @@ public class App {
         Lexico lexico = new Lexico();
         lexico.analyze();
         lexico.printTokensTable();
+        lexico.getErrors().printErrors();
     }
 }
