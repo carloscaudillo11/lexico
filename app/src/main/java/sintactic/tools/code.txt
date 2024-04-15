@@ -15,4 +15,6 @@ Program ejemplo2 {
 	Print(resta);
 
 	Error
+	34.u
+	* <
 }

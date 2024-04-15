@@ -319,9 +319,33 @@ public class Lexico {
                                 generateDescription(lexema),
                                 (int) lexema.charAt(0), line);
                         tokens.add(temp);
+                        estado = 0;
+                        lexema = "";
+                    } else {
+                        estado = 18;
+                        i--;
                     }
-                    estado = 0;
-                    lexema = "";
+                }
+                case 18 -> {
+                    if (i < linea.length()
+                            && (linea.charAt(i) == '*' || linea.charAt(i) == '[' || linea.charAt(i) == ']'
+                            || linea.charAt(i) == '&' || linea.charAt(i) == '$' || linea.charAt(i) == '#'
+                            || linea.charAt(i) == '?' || linea.charAt(i) == '¿' || linea.charAt(i) == '!'
+                            || linea.charAt(i) == '@' || linea.charAt(i) == ',' || linea.charAt(i) == '¡')) {
+                        lexema += linea.charAt(i);
+                        estado = 19;
+                    } else {
+                        estado = 0;
+                    }
+                }
+                case 19 -> {
+                    if (i < linea.length()
+                            && !regex.esALFABETO(linea.charAt(i))) {
+                        lexema += linea.charAt(i);
+                    } else {
+                        estado = 14;
+                        i--;
+                    }
                 }
                 case 14 -> {
                     Token temp;

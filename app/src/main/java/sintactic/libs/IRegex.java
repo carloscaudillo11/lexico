@@ -10,5 +10,5 @@ public interface IRegex {
     String LETRA = "([a-z])";
     String MAYUSCULA = "([A-Z])";
     String RESERVADA = "(Program|Int|Double|Print)";
-    String ALFABETO  = "([a-z0-9]|\\+|\\-|\\=|\\(|\\)|\\;|\\{|\\}|[A-Z])";
+    String ALFABETO  = "([a-zA-Z0-9]|\\+|\\-|\\=|\\(|\\)|\\;|\\{|\\})";
 }
